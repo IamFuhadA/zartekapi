@@ -51,7 +51,6 @@ def rideApi(request, id=0):
 
 @csrf_exempt
 def rideUpdateApi(request, id):
-    # Specialized for status updates and location
     if request.method == "POST" or request.method == "PUT":
         data = JSONParser().parse(request)
         try:
