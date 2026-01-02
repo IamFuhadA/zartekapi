@@ -11,7 +11,6 @@ from .serializers import UserSerializer, RideSerializer
 @csrf_exempt
 def userApi(request, id=0):
     if request.method == "POST":
-        # Check if it's registration or login based on path or simple logic
         user_data = JSONParser().parse(request)
         if 'register' in request.path:
             user_serializer = UserSerializer(data=user_data)
@@ -39,12 +38,8 @@ def rideApi(request, id=0):
             
     elif request.method == "POST":
         ride_data = JSONParser().parse(request)
-        # Note: In FBV without DRF authentication classes, we'd need to manually check token
-        # But to keep "this level", I'll assume we still use some basic auth or just simple mock
         ride_serializer = RideSerializer(data=ride_data)
         if ride_serializer.is_valid():
-            # For "this level", we might not have request.user readily available without middleware
-            # I'll try to get the user from the data if provided, or a mock user for now
             rider_id = ride_data.get('rider')
             if rider_id:
                 rider = User.objects.get(id=rider_id)
