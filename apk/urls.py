@@ -5,6 +5,4 @@ urlpatterns = [
     re_path(r'^user/register/$', views.userApi),
     re_path(r'^ride/$', views.rideApi),
     re_path(r'^ride/([0-9]+)$', views.rideApi),
-    re_path(r'^ride/update/([0-9]+)$', views.rideUpdateApi),
-    re_path(r'^ride/matching/$', views.rideMatchingApi),
 ]

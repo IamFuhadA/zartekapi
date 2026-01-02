@@ -19,14 +19,12 @@ class UserSerializer(serializers.ModelSerializer):
 
 class RideSerializer(serializers.ModelSerializer):
     rider_name = serializers.ReadOnlyField(source='rider.username')
-    driver_name = serializers.ReadOnlyField(source='driver.username')
 
     class Meta:
         model = Ride
         fields = [
-            'id', 'rider', 'rider_name', 'driver', 'driver_name',
-            'pickup_location', 'dropoff_location', 'status',
-            'current_latitude', 'current_longitude',
-            'created_at', 'updated_at'
+            'id', 'rider', 'rider_name',
+            'pickup_location', 'dropoff_location',
+            'created_at'
         ]
-        read_only_fields = ['rider', 'status', 'created_at', 'updated_at']
+        read_only_fields = ['rider', 'created_at']
